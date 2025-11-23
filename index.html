@@ -1,0 +1,171 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Kunnu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+    }
+    header {
+      padding: 40px 20px;
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+    .btn {
+      padding: 12px 22px;
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      font-size: 1.1rem;
+      margin: 10px;
+      transition: 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.08);
+      background: #ffe3ea;
+    }
+    #entryPage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .game-card {
+      background: rgba(255,255,255,0.75);
+      margin: 20px auto;
+      padding: 20px;
+      width: 85%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+    }
+    .heart { font-size: 2rem; cursor: pointer; transition: 0.2s; }
+    .heart:hover { transform: scale(1.3); }
+    input {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 70%;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body><div id="entryPage">
+  <h2>🔐 Welcome, Kunnu</h2>
+  <p>Hint: It's something important about *him* — Class, School Time, or Something only you know 😉</p>
+  <input type="password" id="passInput" placeholder="Enter Password" />
+  <button class="btn" onclick="checkPass()">Unlock</button>
+  <p id="passMsg"></p>
+</div><div id="mainPage" style="display:none;"><header>Hey Kunnu 👀💗<br/>Someone made this just for you…</header><!-- Flirty Message Generator --><div id="messageBox" style="font-size:1.3rem; min-height:40px; padding:10px;"></div>
+<button class="btn" onclick="showMessage()">Tap for a Surprise</button><script>
+  const msgs = [
+    "You know… you are the reason someone smiles extra these days.",
+    "Someone thinks you're the cutest chaos ever.",
+    "Don't smile too much… warna dil aa jayega 💗😉",
+    "You make the world softer just by existing.",
+    "Lowkey… someone is obsessed with your vibe.",
+    "Careful—your smile is too distracting."
+  ];
+  function showMessage() {
+    const msg = msgs[Math.floor(Math.random()*msgs.length)];
+    document.getElementById("messageBox").innerText = msg;
+  }
+</script><!-- Game 1: Catch the Heart --><div class="game-card">
+  <h2>💘 Catch the Heart</h2>
+  <p>Tap the moving heart!</p>
+  <span id="heart" class="heart">❤️</span>
+  <p id="score">Score: 0</p>
+</div><script>
+  let score = 0;
+  const heart = document.getElementById('heart');
+  heart.style.position = 'relative';
+  heart.addEventListener('click', () => {
+    score++;
+    document.getElementById('score').innerText = "Score: " + score;
+    heart.style.position = 'relative';
+    heart.style.left = Math.random()*60 + '%';
+    heart.style.top = Math.random()*20 + '%';
+  });
+
+  function resetHeart() {
+    heart.style.left = '0px';
+    heart.style.top = '0px';
+    score = 0;
+    document.getElementById('score').innerText = 'Score: 0';
+  }
+</script><!-- Game 2: Truth or Dare (Soft Flirty Version) --><div class="game-card">
+  <h2>🎲 Truth or Dare (Soft)</h2>
+  <p id="tdText">Press the button to start</p>
+  <button class="btn" onclick="truthDare()">Spin</button>
+</div><script>
+  const tdList = [
+    "Truth: Who do you think about the most these days?", 
+    "Truth: What is the cutest thing someone has done for you?",
+    "Truth: Do you think someone secretly likes you? 👀",
+    "Dare: Smile for 5 seconds thinking about him.",
+    "Dare: Say the sweetest thing you can about him.",
+    "Dare: Imagine him telling you you're special."
+  ];
+  function truthDare() {
+    document.getElementById('tdText').innerText = tdList[Math.floor(Math.random()*tdList.length)];
+  }
+</script><!-- Game 3: Guess the Compliment --><div class="game-card">
+  <h2>💗 Guess the Compliment</h2>
+  <p id="compBox">Tap to reveal a compliment meant for you</p>
+  <button class="btn" onclick="newComp()">Reveal</button>
+</div><script>
+  const comps = [
+    "You're the softest part of someone's day.",
+    "Your vibe? Addictive.",
+    "You look good even on your worst days.",
+    "Someone would pause a cricket match for you.",
+    "You make normal moments feel special." 
+  ];
+  function newComp() {
+    document.getElementById('compBox').innerText = comps[Math.floor(Math.random()*comps.length)];
+  }
+</script><footer style="padding: 30px; font-size: 1.1rem; opacity: 0.8;">Made specially for *Kunnu* 💗</footer><!-- Secret Message Section --><div class="game-card" style="margin-bottom:60px;">
+  <h2>💌 Secret Message for You</h2>
+  <p id="secretMsg">Tap the button… if you dare 😉</p>
+  <button class="btn" onclick="showSecret()">Reveal Secret</button>
+</div><script>
+  function showSecret() {
+    document.getElementById('secretMsg').innerText =
+      "You know what’s crazy? The way your smile stays in someone’s mind… even when you’re not around. And honestly—if he ever acts normal around you, he’s probably pretending, because you make his heart beat way faster than he’ll ever admit.";
+  }
+</script></footer></div><script>
+  function checkPass() {
+    const input = document.getElementById('passInput').value.trim();
+
+    const correctPasswords = [
+      "class8", "8A", "eveningshift", "12pm", "gurvansh", "monitor8A"
+    ];
+
+    if (correctPasswords.includes(input.toLowerCase())) {
+      document.getElementById('entryPage').style.display = 'none';
+      document.getElementById('mainPage').style.display = 'block';
+    } else {
+      document.getElementById('passMsg').innerText = "Wrong password! Hint: Think about HIS everyday routine.";
+    }
+  }
+</script><!-- NEW GAME: Love Meter --><div class="game-card">
+  <h2>💞 Love Meter</h2>
+  <p>Tap the button to see how much someone likes you today…</p>
+  <p id="loveResult" style="font-size:1.4rem;"></p>
+  <button class="btn" onclick="loveMeter()">Check</button>
+</div><script>
+  function loveMeter() {
+    resetHeart();
+    const level = Math.floor(Math.random() * 21) + 80;
+    document.getElementById('loveResult').innerText = level + '% — someone is thinking about you a *lot* right now.';
+  }
+</script></body>
+</html>
